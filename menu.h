@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "command.h"
+#include <vector>
 
 using namespace std;
 

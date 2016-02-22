@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <stdlib.h>
+#include <string>
 #include "composite.h"
 #include "menu.h"
 #include "command.h"
