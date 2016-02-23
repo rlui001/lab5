@@ -47,7 +47,6 @@ int main() {
         }
         else if(isInteger(input)) {
             if(!menu->initialized()) {
-                cout << "testestests" << endl;
                 menu->add_command(new OpCommand(stoi(input)));
                 cout << "Result: ";
                 menu->execute();
