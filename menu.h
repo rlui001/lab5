@@ -48,10 +48,17 @@ class Menu {
             else if (history_index > history.size() - 1) { // ERROR CASE
                 cout << "INDEX IS PAST SIZE OF VECTOR\n";
             }
-            else { //index is smaller than vector size
-                history.at(history_index) = cmd;
-                ++history_index;
+            else { //index is smaller than vector size, needs to adjust whole vector
+                
+                vector<Command*>::iterator it;
+                it = history.begin();
+                for (int i = 0; i != history_index; ++i) {
+                    ++it;
+                }
+                // iterator should now be at position to insert into vector
+                history.insert(it, cmd);
             }
+
         };
         Command* get_command() {
             //Returns the command in history we are currently referring to (based on history_index)
