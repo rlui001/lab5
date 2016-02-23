@@ -42,7 +42,8 @@ class Menu {
         };
         void add_command(Command* cmd) {
             //Adds a command to history in the appropriate posiiton (based on history_index)
-            if (history_index == history.size() - 1) {
+            int temp = history.size();
+            if (history_index == temp - 1) {
                 history.push_back(cmd);
                 ++history_index;
             }
@@ -50,7 +51,7 @@ class Menu {
                  history.push_back(cmd);
                 ++history_index;
             }
-            else if (history_index > history.size() - 1) { // ERROR CASE
+            else if (history_index > temp - 1) { // ERROR CASE
                 cout << "INDEX IS PAST SIZE OF VECTOR\n";
             }
             else { //index is smaller than vector size, needs to adjust whole vector
@@ -74,7 +75,8 @@ class Menu {
         };
         void undo() {
             //Moves to the last command in history (if possible)
-            if (history.size() == 0) {
+            int temp = history.size();
+            if (temp  == 0) {
                 cout << "Undo is not possible." << endl;
             }
             else if (history_index == 0) {
@@ -87,13 +89,14 @@ class Menu {
         };
         void redo() {
             //Moves to the next command in history (if possible)
-            if (history.size() == 0) {
+            int temp = history.size();
+            if (temp == 0) {
                 cout << "Redo is not possible." << endl;
             }
-            else if (history_index == history.size() - 1) {
+            else if (history_index == temp - 1) {
                 cout << "Redo is not possible." << endl;
             }
-            else if (history_index >= history.size()) {
+            else if (history_index >= temp) {
                 cout << "Redo is not possible." << endl;
             }
             else {
