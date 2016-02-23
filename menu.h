@@ -15,7 +15,7 @@ class Menu {
     public:
         Menu() {
             //Base constructor to set up all necessary members
-            history_index = 0;
+            history_index = -1;
         };
         void execute() {
             //Prints the current commands value (based on history_index), if no commands exist
@@ -25,6 +25,7 @@ class Menu {
             }
             else {
                 cout << history.at(history_index)->execute();
+                cout << endl;
             }
         };
         bool initialized() {
@@ -45,18 +46,25 @@ class Menu {
                 history.push_back(cmd);
                 ++history_index;
             }
+            else if (history.size() == 0) {
+                 history.push_back(cmd);
+                ++history_index;
+            }
             else if (history_index > history.size() - 1) { // ERROR CASE
                 cout << "INDEX IS PAST SIZE OF VECTOR\n";
             }
             else { //index is smaller than vector size, needs to adjust whole vector
-                
+                int i = 0;
                 vector<Command*>::iterator it;
                 it = history.begin();
-                for (int i = 0; i != history_index; ++i) {
+                for (i = 0; i != history_index; ++i) {
                     ++it;
                 }
                 // iterator should now be at position to insert into vector
-                history.insert(it, cmd);
+                history.insert(it+1, cmd);
+
+
+               ++history_index;
             }
 
         };
